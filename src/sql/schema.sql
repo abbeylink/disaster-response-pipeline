@@ -1,4 +1,4 @@
--- ========== STAGING ==========
+-- STAGING 
 create table if not exists stg_projects (
     gmProjectId bigint primary key,
     disasterNumber INT,
@@ -26,7 +26,7 @@ create table if not exists stg_projects (
     lastRefresh timestamp
 );
 
--- ========== DIMENSIONS ==========
+-- DIMENSIONS 
 create table if not exists dim_disaster (
     disasterNumber int primary key,
     declarationDate date,
@@ -40,7 +40,7 @@ create table if not exists dim_location (
     primary key (stateAbbreviation, county, countyCode)
 );
 
--- ========== FACT ==========
+-- FACT 
 create table if not exists fact_project (
     gmProjectId bigint primary key references stg_projects(gmProjectId),
     disasterNumber int references dim_disaster(disasterNumber),
